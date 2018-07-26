@@ -2,7 +2,7 @@
 
 Sample webpack project with ES6 and Sass. Also includes Sass linting setup with [stylelint](https://github.com/stylelint/stylelint), to enforce BEM patterns for selectors.
 
-This project use [Bootstrap 3.3.7](https://getbootstrap.com/docs/3.3/) version.
+This project use [Bootstrap 4.1.x](https://getbootstrap.com/) version.
 
 This is a basic setup that only includes two main app files for demo purposes: `./src/index.js` and `./assets/stylesheets/styles.scss`. You get the idea.
 
