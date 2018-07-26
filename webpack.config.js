@@ -7,6 +7,7 @@ const StyleLintPlugin = require('stylelint-webpack-plugin');
 const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const DashboardPlugin = require("webpack-dashboard/plugin");
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 require('es6-promise').polyfill();
 
@@ -58,16 +59,17 @@ let config = {
         )
       },
       {
+        test: /\.(jpg|jpeg|gif|png)$/,
+        exclude: /node_modules/,
+        loader:'url-loader?limit=1024&name=images/**/[name].[ext]'
+      },
+      {
         test: /\.(png|woff|woff2|eot|ttf|svg)$/,
         use: 'url-loader?limit=100000'
       },
       {
         test: /\.png$/,
         use: 'url-loader?limit=100000'
-      },
-      {
-        test: /\.jpg$/,
-        use: 'file-loader'
       }
     ]
   },
@@ -92,7 +94,13 @@ let config = {
       failOnError: false,
       quiet: false
     }),
-    new DashboardPlugin()
+    new DashboardPlugin(),
+
+    new CopyWebpackPlugin([{
+      from:'assets/images',
+      to:'images',
+      test: /\.(jpg|jpeg|gif|png)$/
+    }]),
 
   ],
 
