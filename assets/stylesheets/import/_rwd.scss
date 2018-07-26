@@ -2,7 +2,7 @@
 // Rwd @import and custom
 // --------------------------------------------------
 
-@media (max-width: $screen-md-min) {
+@media (max-width: var(--breakpoint-md)) {
   // Your rwd code
 }
 

@@ -68,22 +68,6 @@ let config = {
       {
         test: /\.jpg$/,
         use: 'file-loader'
-      },
-      {
-        test: /\.(woff|woff2) (\?v=\d+\.\d+\.\d+)?$/,
-        use: 'url-loader?limit=10000&mimetype=application/font-woff'
-      },
-      {
-        test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-        use: 'url-loader?limit=10000&mimetype=application/octet-stream'
-      },
-      {
-        test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-        use: 'file-loader'
-      },
-      {
-        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-        use: 'url-loader?limit=10000&mimetype=image/svg+xml'
       }
     ]
   },
@@ -91,7 +75,10 @@ let config = {
   plugins: [
     new Webpack.ProvidePlugin({
       $: 'jquery',
-      jQuery: 'jquery'
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery',
+      'window.Holder': 'holderjs',
+      Popper: ['popper.js', 'default'],
     }),
     // Specify the resulting CSS filename
     new ExtractTextWebpackPlugin('styles.css'),

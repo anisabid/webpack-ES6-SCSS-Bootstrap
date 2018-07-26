@@ -1,40 +1,26 @@
 'use strict';
 
-// Import Bootstrap
-import 'bootstrap';
+// Import or Require Bootstrap
+//import 'bootstrap';
+require('bootstrap');
 
-//require("bootstrap-sass-webpack");
+// Required all Styles
+require('../assets/stylesheets/styles.scss');
 
-require("../assets/stylesheets/styles.scss");
+// Required HoldJS
+require('holderjs');
 
-console.log('Init !');
+// import Offcanvas
+import {Offcanvas} from "./modules/offcanvas";
 
-let x = 1;
-
-if (x === 1) {
-  let x = 2;
-
-  console.log('x inside the if :' + x);
-  // expected output: 2
-}
-
-console.log('x outside the if :' + x);
-// expected output: 1
-
-let y = () => {
-  console.log('init ES6 function');
-};
-
-y();
-
-
+// Custom scripts
 (($) => {
-  console.log('Anonyme init ES6 function');
-  $('[data-toggle="tooltip"]').tooltip();
+  let offcanvas = new Offcanvas();
+  offcanvas.init();
 })(jQuery);
 
 (($) => {
   $(document).ready(function () {
     console.log("Document ready!");
   });
-})(jQuery)
+})(jQuery);
